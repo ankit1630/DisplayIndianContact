@@ -1,9 +1,6 @@
 #include<bits/stdc++.h>
 #include<dirent.h>
 
-#include<bits/stdc++.h>
-#include<dirent.h>
-
 using namespace std;
 /*the function return either it is a Indian mobile contact or not*/
 int isPhoneNumber(string s)
