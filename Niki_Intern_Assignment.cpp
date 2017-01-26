@@ -1,25 +1,28 @@
 #include<bits/stdc++.h>
 #include<dirent.h>
 
+#include<bits/stdc++.h>
+#include<dirent.h>
+
 using namespace std;
-/*the function return either it is a indian mobile contact or not*/
-bool isPhoneNumber(string s)
+/*the function return either it is a Indian mobile contact or not*/
+int isPhoneNumber(string s)
 {
     if(s.size()==11 && s[0]=='0' && (s[1]=='7' || s[1]=='8' || s[1]=='9') )//if mobile number starting with 0
     {
         for(int i=2;i<11;i++)
             if(s[i]>57 || s[i]<48)
-                return false;
-        return true;
+                return 0;
+        return 1;
     }
     else if(s.size()==13 && s.substr(0,3).compare("+91")==0 && (s[3]=='7' || s[3]=='8' || s[3]=='9'))//if number starting with +91
     {
         for(int i=4;i<13;i++)
             if(s[i]>57 || s[i]<48)
-                return false;
-        return true;
+                return 0;
+        return 2;
     }
-    return false;
+    return 0;
 }
 // driver program
 int main()
@@ -42,11 +45,13 @@ int main()
             ifstream file(filep.c_str());
             if (file.is_open())      // opens a file
             {
-                cout <<"Number from "<<filep<<endl ;
+                //cout <<"Number from directory "<<filep<<endl ;
                 while(file>> number)  // reading word by word
                 {
-                    if(isPhoneNumber(number))  //valid number test
-                    cout<<number<<endl;
+                    if(isPhoneNumber(number)==1)  //valid number test
+                    cout<<number.substr(1,10)<<endl;
+                    else if(isPhoneNumber(number)==2)
+                        cout<<number.substr(3,10)<<endl;
                 }
                 file.close();
             }
@@ -54,3 +59,4 @@ int main()
     }
     return 0;
 }
+
