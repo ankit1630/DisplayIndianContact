@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     string direc,filep,number;
-    regex rgx("((\\+91)|[0])[789]\\d{9}[,.]?");// pattern for indian contact
+    regex rgx("((\\+91)|[0])?[789]\\d{9}");   //regex pattern
     DIR* ptr;
     struct dirent *dirp;
     cout<<"Enter file path: ";
@@ -25,15 +25,14 @@ int main()
             if (file.is_open())      // opens a file
             {
                 //cout <<"Number from directory "<<filep<<endl ;
-                while(file>> number)  // reading word by word
+                while(file >> number)  // reading word by word
                 {
                  if(regex_match(number,rgx))
                     {
-                    	if(number.length()==13)
-                    	cout<<number.substr(3,10)<<endl;
-                    	else
-                    	cout<<number.substr(1,10)<<endl;
-	            }
+                    	int n=number.length();
+                    	n=n-10;
+                    	cout<<number.substr(n,10)<<endl;
+		    }
                 }
                 file.close();
             }
@@ -41,4 +40,3 @@ int main()
     }
     return 0;
 }
-
