@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     string direc,filep,number;
-    regex rgx("((\\+91)|[0])?[789]\\d{9}");   //regex pattern
+    regex rgx("((\\+91)|[0])?[-]?[789]\\d{9}");   //regex pattern
     DIR* ptr;
     struct dirent *dirp;
     cout<<"Enter file path: ";
