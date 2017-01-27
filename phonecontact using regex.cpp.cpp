@@ -33,7 +33,7 @@ int main()
                     	cout<<number.substr(3,10)<<endl;
                     	else
                     	cout<<number.substr(1,10)<<endl;
-					}
+	            }
                 }
                 file.close();
             }
